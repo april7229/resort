@@ -18,6 +18,7 @@ className="btn-primary">
 </Hero>
 <Services />
 <FeaturedRooms />
+
 </>
 );
 }
