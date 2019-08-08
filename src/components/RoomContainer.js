@@ -5,14 +5,14 @@ import React from 'react';
  import Loading from './Loading';
 
  function RoomContainer({context}){
-const {loading , sortedRooms, rooms } =context;
+const {loading , sortedRooms, rooms } = context;
 if (loading){
     return <Loading />;
 
 }
 return (
     <>
-        Hello from rooms RoomContainer
+        
         <RoomsFilter rooms={rooms} />
         <RoomsList rooms={sortedRooms} />
     </>

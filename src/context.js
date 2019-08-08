@@ -45,8 +45,8 @@ componentDidMount(){
 }
 
 formatData(items){
-    let tempItems = items.map(item =>{
-let id = item.sys.id;
+    let tempItems = items.map(item => {
+     let id = item.sys.id;
 let images = item.fields.images.map (image => 
     image.fields.file.url);
 
@@ -55,14 +55,14 @@ let images = item.fields.images.map (image =>
     });
     return tempItems
 }
-getRoom = slug => {
+getRoom = (slug) => {
     let tempRooms = [...this.state.rooms];
     const room = tempRooms.find(room => room.slug===slug);
     return room;
 };
 handleChange = event => {
     const target = event.target;
-    const value = event.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = event.target.name;
     this.setState(
         {
@@ -100,6 +100,18 @@ if(capacity !==1){
 }
 // filter by price
 tempRooms = tempRooms.filter(room => room.price <= price);
+
+tempRooms = tempRooms.filter(room => room.size >=minSize && room.size <=maxSize );
+//filter by breakfast
+if(breakfast){
+    tempRooms = tempRooms.filter(room => room.breakfast === true);
+
+}
+//filter by pets
+if(pets){
+    tempRooms = tempRooms.filter(room => room.pets === true);
+
+}
 //changeState
 this.setState({
     sortedRooms: tempRooms
